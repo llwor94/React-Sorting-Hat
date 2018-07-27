@@ -1,0 +1,14 @@
+[Settings]
+ID = "fcf67366-ab0d-41a9-8711-b6a82dba0d7f"
+
+# Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.  
+
+[build]
+  # This is the directory to change to before starting a build.
+  base    = "react-sorting-hat/"
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+  # This is the directory that you are publishing from (relative to root of your repo)
+  publish = "react-sorting-hat/build/"
+  # This will be your default build command
+  command = "yarn build"
+  

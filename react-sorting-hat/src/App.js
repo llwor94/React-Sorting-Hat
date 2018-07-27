@@ -5,6 +5,7 @@ import QuestionList from './components/QuestionList'
 import Results from './components/Results'
 import Hat from './harry-potter.svg'
 import './App.css';
+// import newConfettiGenerator from "../node_modules/confetti-js/dist/index.min.js";
 
 class App extends Component {
   constructor() {
@@ -16,24 +17,40 @@ class App extends Component {
       houses: [
         {
           name: 'hufflepuff',
-          count: 0
+          count: 0,
+          colors:[
+            [255, 239, 0],
+            [0, 0, 0]
+          ]
         },
         {
           name: 'ravenclaw',
-          count: 0
+          count: 0,
+          colors: [
+            [0,0,225],
+            [178, 133, 76]
+          ]
         },
         {
           name: 'gryffindor',
-          count: 0
+          count: 0,
+          colors: [
+            [128, 0, 0],
+            [255, 215, 0]
+          ]
         },
         {
           name: 'slytherin',
-          count: 0
+          count: 0,
+          colors: [
+            [0, 118, 0],
+            [192, 192, 192]
+          ]
         }
       ],
       currentIndex: 0,
       currentQuestion: '',
-      isLastQuestion: false
+      isLastQuestion: false,
     }
   }
 
@@ -83,14 +100,21 @@ class App extends Component {
     let winner = this.state.houses.reduce((first, house) => {
       return house.count > first.count ? house : first
     }, this.state.houses[0]);
-    this.setState({ chosenHouse: winner })
+    this.setState({ 
+      chosenHouse: winner,
+     })
+    // let confetti = newConfettiGenerator({target: 'my-canvas', colors: winner.colors})
+    // confetti.render();
   }
-
+  // winner = () => {
+  //   let confetti = new ConfettiGenerator()
+  // }
   render() { 
     const showQuestions = this.state.welcomed && !this.state.chosenHouse;
     const showResults = this.state.welcomed && this.state.chosenHouse;
     return (
       <div className="App">
+        {/* <canvas id="my-canvas"></canvas> */}
         <div className="background"></div>
         <img className="header" src={Hat} />
         <div className="app-container">
